@@ -9,6 +9,7 @@ public class DealerShipFileManager {
 
         public DealerShip getDealerShip(){
             try{
+
                 BufferedReader bufferedReader = new BufferedReader( new FileReader("inventory.csv"));
                 String line = bufferedReader.readLine();
                 String[] dealership_info_storage = line.split("\\|");
