@@ -8,8 +8,8 @@ public class DealerShip {
     private String name;
     private String address;
     private String phone;
+    private ArrayList<Vehicle> inventory;
 
-    static ArrayList<Vehicle> inventory;
 
     public DealerShip(String name, String address, String phone){
         this.name = name;

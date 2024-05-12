@@ -6,11 +6,17 @@ import java.io.IOException;
 
 public class DealerShipFileManager {
 
-        public static void bufReader(){
 
+        public DealerShip getDealerShip(){
             try{
                 BufferedReader bufferedReader = new BufferedReader( new FileReader("inventory.csv"));
-                String line;
+                String line = bufferedReader.readLine();
+                String[] dealership_info_storage = line.split("\\|");
+                String name = dealership_info_storage[0];
+                String address = dealership_info_storage[1];
+                String phone = dealership_info_storage[2];
+                DealerShip dealerShip = new DealerShip(name, address, phone);
+
                 while((line = bufferedReader.readLine()) != null){
                     String[] vehicle_info_storage = line.split("\\|");
                     int vin = Integer.parseInt(vehicle_info_storage[0]);
@@ -21,8 +27,9 @@ public class DealerShipFileManager {
                     String color = vehicle_info_storage[5];
                     int odometer = Integer.parseInt(vehicle_info_storage[6]);
                     double price = Double.parseDouble(vehicle_info_storage[7]);
-                    Vehicle temp_date = new Vehicle(vin, year, make, model, vehicle_type, color, odometer, price);
-
+                    Vehicle temp_data = new Vehicle(vin, year, make, model, vehicle_type, color, odometer, price);
+                    dealerShip.addVehicle(temp_data);
+                    return  dealerShip;
                 }
 
             }catch(IOException e){
@@ -31,11 +38,7 @@ public class DealerShipFileManager {
 
         }
 
-        public static DealerShip getDealerShip(){
-            return null;
-        }
-
-        public static void saveDealerShip(DealerShip dealerShip){
+        public void saveDealerShip(DealerShip dealerShip){
 
         }
 
