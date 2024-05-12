@@ -39,4 +39,12 @@ public class DealerShip {
 
     }
 
+    public void addVehicle(String vehicle){
+
+    }
+
+    public void removeVehicle(String vehicle){
+
+    }
+
 }
