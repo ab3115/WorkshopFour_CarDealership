@@ -2,6 +2,8 @@ package com.ps;
 
 public class UserInterface {
 
+    DealerShip dealerShip = new DealerShip();
+
     public void display(){
 
     }
