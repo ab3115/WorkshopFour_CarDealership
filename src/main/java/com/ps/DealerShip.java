@@ -1,6 +1,7 @@
 package com.ps;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DealerShip {
 
@@ -10,27 +11,31 @@ public class DealerShip {
 
     static ArrayList<Vehicle> inventory = new ArrayList<>();
 
-    public void getVehiclesByPrice(int min, int max){
+    public List<Vehicle> getVehiclesByPrice(int min, int max){
 
     }
 
-    public void getVehicleByMakeModel(String make, String model){
+    public List<Vehicle> getVehicleByMakeModel(String make, String model){
 
     }
 
-    public void getVehicleByYear(int min, int max){
+    public List<Vehicle> getVehicleByYear(int min, int max){
 
     }
 
-    public void getVehicleByColor(String color){
+    public List<Vehicle> getVehicleByColor(String color){
 
     }
 
-    public void getVehicleByMileage(int min, int max){
+    public List<Vehicle> getVehicleByMileage(int min, int max){
 
     }
 
-    public void getVehicleByType(String vehicleType){
+    public List<Vehicle> getVehicleByType(String vehicleType){
+
+    }
+
+    public List<Vehicle> getAllVehicles(){
 
     }
 
