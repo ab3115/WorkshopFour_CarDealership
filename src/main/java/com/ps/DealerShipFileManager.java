@@ -8,6 +8,9 @@ public class DealerShipFileManager {
 
 
         public DealerShip getDealerShip(){
+
+            DealerShip dealership = null;
+
             try{
 
                 BufferedReader bufferedReader = new BufferedReader( new FileReader("inventory.csv"));
@@ -30,13 +33,14 @@ public class DealerShipFileManager {
                     double price = Double.parseDouble(vehicle_info_storage[7]);
                     Vehicle temp_data = new Vehicle(vin, year, make, model, vehicle_type, color, odometer, price);
                     dealerShip.addVehicle(temp_data);
-                    return  dealerShip;
+
                 }
 
+                return  dealerShip;
             }catch(IOException e){
                 e.printStackTrace();
             }
-
+            return dealership;
         }
 
         public void saveDealerShip(DealerShip dealerShip){

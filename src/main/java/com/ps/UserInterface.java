@@ -1,5 +1,6 @@
 package com.ps;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -50,6 +51,7 @@ public class UserInterface {
             case("6"):
                 break;
             case("7"):
+                processGetAllVehiclesRequest();
                 break;
             case("8"):
                 break;
@@ -70,8 +72,8 @@ public class UserInterface {
         System.out.println("Please enter the maximum price");
         int max = scanner.nextInt();
         System.out.println("The vehicles listed between that price range are: ");
-        ArrayList<Vehicle> vehicle_list = dealerShip.getVehiclesByPrice(min, max);
-        displayVehicles();
+        List<Vehicle> vehicle_list = dealerShip.getVehiclesByPrice(min, max);
+        displayVehicles(vehicle_list);
     }
 
     public void processGetByMakeModelRequest(){
@@ -95,7 +97,9 @@ public class UserInterface {
     }
 
     public void processGetAllVehiclesRequest(){
-
+        System.out.println("All vehicles in our lineup are: ");
+        List<Vehicle> vehicle_list = dealerShip.getAllVehicles();
+        displayVehicles(vehicle_list);
     }
 
     public void processAddVehiclesRequest(){
@@ -106,8 +110,11 @@ public class UserInterface {
 
     }
 
-    private void displayVehicles(ArrayList<Vehicle> inventory){
+    private void displayVehicles(List<Vehicle> inventory){
 
+        for(int i = 0;i < inventory.size();i++){
+            System.out.println(inventory.get(i).toString());
+        }
     }
 
 }
