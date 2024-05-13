@@ -1,8 +1,6 @@
 package com.ps;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class DealerShipFileManager {
 
@@ -40,10 +38,19 @@ public class DealerShipFileManager {
             }catch(IOException e){
                 e.printStackTrace();
             }
+            //Could not return the dealership object from outside the try catch
             return dealership;
         }
 
         public void saveDealerShip(DealerShip dealerShip){
+            try{
+                BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("inventory.csv", true));
+                String text;
+                text = String.format()
+
+            }catch(IOException e){
+                e.printStackTrace();
+            }
 
         }
 

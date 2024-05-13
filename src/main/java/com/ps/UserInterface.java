@@ -99,6 +99,7 @@ public class UserInterface {
     public void processGetAllVehiclesRequest(){
         System.out.println("All vehicles in our lineup are: ");
         List<Vehicle> vehicle_list = dealerShip.getAllVehicles();
+        System.out.println(dealerShip.getName());
         displayVehicles(vehicle_list);
     }
 

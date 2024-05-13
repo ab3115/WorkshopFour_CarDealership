@@ -18,6 +18,10 @@ public class DealerShip {
         inventory = new ArrayList<>();
     }
 
+    public String getName(){
+        return name;
+    }
+
     public List<Vehicle> getVehiclesByPrice(int min, int max){
         return null;
     }
@@ -48,10 +52,16 @@ public class DealerShip {
 
     public void addVehicle(Vehicle vehicle){
         inventory.add(vehicle);
+
     }
 
-    public void removeVehicle(String vehicle){
+    public void removeVehicle(Vehicle vehicle){
 
+        for(int i = 0;i < inventory.size();i++){
+            if(inventory.get(i).equals(vehicle)){
+                inventory.remove(vehicle);
+            }
+        }
     }
 
 }
