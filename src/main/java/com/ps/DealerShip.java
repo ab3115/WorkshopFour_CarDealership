@@ -31,30 +31,72 @@ public class DealerShip {
     }
 
     public List<Vehicle> getVehiclesByPrice(int min, int max){
-        for(int i = 0; i<inventory.size(); i++){
 
+        List<Vehicle> storage = new ArrayList<>();
+        for(int i = 0; i<inventory.size(); i++){
+            double price = inventory.get(i).getPrice();
+            if(min < price && price > max){
+                storage.add(inventory.get(i));
+            }
         }
-        return null;
+        return storage;
     }
 
+
     public List<Vehicle> getVehicleByMakeModel(String make, String model){
-        return null;
+        List<Vehicle> storage = new ArrayList<>();
+        for(int i = 0; i<inventory.size(); i++){
+            String inv_make = inventory.get(i).getMake();
+            String inv_model = inventory.get(i).getModel();
+            if(inv_make.equals(make) && inv_model.equals(model)){
+                storage.add(inventory.get(i));
+            }
+        }
+        return storage;
     }
 
     public List<Vehicle> getVehicleByYear(int min, int max){
-        return null;
+        List<Vehicle> storage = new ArrayList<>();
+        for(int i = 0; i<inventory.size(); i++){
+            int inv_year = inventory.get(i).getYear();
+            if(min < inv_year && inv_year > max){
+                storage.add(inventory.get(i));
+            }
+        }
+        return storage;
     }
 
     public List<Vehicle> getVehicleByColor(String color){
-        return null;
+        List<Vehicle> storage = new ArrayList<>();
+        for(int i = 0; i<inventory.size(); i++){
+            String inv_color = inventory.get(i).getColor();
+            if(color.equals(inv_color)){
+                storage.add(inventory.get(i));
+            }
+        }
+        return storage;
     }
 
     public List<Vehicle> getVehicleByMileage(int min, int max){
-        return null;
+        List<Vehicle> storage = new ArrayList<>();
+        for(int i = 0; i<inventory.size(); i++){
+            int inv_mileage = inventory.get(i).getOdometer();
+            if(min < inv_mileage && inv_mileage > max){
+                storage.add(inventory.get(i));
+            }
+        }
+        return storage;
     }
 
     public List<Vehicle> getVehicleByType(String vehicleType){
-        return null;
+        List<Vehicle> storage = new ArrayList<>();
+        for(int i = 0; i<inventory.size(); i++){
+            String inv_type = inventory.get(i).getVehicleType();
+            if(inv_type.equals(vehicleType)){
+                storage.add(inventory.get(i));
+            }
+        }
+        return storage;
     }
 
     public List<Vehicle> getAllVehicles(){
