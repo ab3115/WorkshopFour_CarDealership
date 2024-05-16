@@ -86,7 +86,6 @@ public class UserInterface {
         System.out.println("Please enter the maximum price.");
         double max = scanner.nextInt();
         List<Vehicle> vehicle_list = dealerShip.getVehiclesByPrice(min, max);
-
         if(!vehicle_list.isEmpty()){
             System.out.println("The vehicles listed between that price range are: \n");
              displayVehicles(vehicle_list);}
@@ -134,7 +133,6 @@ public class UserInterface {
             int max = scanner.nextInt();
             List<Vehicle> vehicle_list = dealerShip.getVehicleByYear(min, max);
 
-            if(!vehicle_list)
             System.out.println("The vehicles listed between those years are:\n");
 
             displayVehicles(vehicle_list);
