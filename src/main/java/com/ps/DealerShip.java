@@ -30,7 +30,7 @@ public class DealerShip {
         return phone;
     }
 
-    public List<Vehicle> getVehiclesByPrice(int min, int max){
+    public List<Vehicle> getVehiclesByPrice(double min, double max){
 
         List<Vehicle> storage = new ArrayList<>();
         for(int i = 0; i<inventory.size(); i++){
@@ -48,7 +48,7 @@ public class DealerShip {
         for(int i = 0; i<inventory.size(); i++){
             String inv_make = inventory.get(i).getMake();
             String inv_model = inventory.get(i).getModel();
-            if(inv_make.equals(make) && inv_model.equals(model)){
+            if(inv_make.equalsIgnoreCase(make) && inv_model.equalsIgnoreCase(model)){
                 storage.add(inventory.get(i));
             }
         }
@@ -70,7 +70,7 @@ public class DealerShip {
         List<Vehicle> storage = new ArrayList<>();
         for(int i = 0; i<inventory.size(); i++){
             String inv_color = inventory.get(i).getColor();
-            if(color.equals(inv_color)){
+            if(color.equalsIgnoreCase(inv_color)){
                 storage.add(inventory.get(i));
             }
         }
@@ -92,7 +92,7 @@ public class DealerShip {
         List<Vehicle> storage = new ArrayList<>();
         for(int i = 0; i<inventory.size(); i++){
             String inv_type = inventory.get(i).getVehicleType();
-            if(inv_type.equals(vehicleType)){
+            if(inv_type.equalsIgnoreCase(vehicleType)){
                 storage.add(inventory.get(i));
             }
         }

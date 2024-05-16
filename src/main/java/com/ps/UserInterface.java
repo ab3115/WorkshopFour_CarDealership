@@ -1,5 +1,6 @@
 package com.ps;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -78,24 +79,32 @@ public class UserInterface {
 
     public void processGetByPriceRequest(){
 
+    try {
         System.out.println("Please enter the minimum price.");
-        int min = scanner.nextInt();
+        double min = scanner.nextDouble();
         System.out.println("Please enter the maximum price.");
-        int max = scanner.nextInt();
+        double max = scanner.nextInt();
         System.out.println("The vehicles listed between that price range are: ");
         List<Vehicle> vehicle_list = dealerShip.getVehiclesByPrice(min, max);
         displayVehicles(vehicle_list);
+    }catch(InputMismatchException e){
+        System.out.println("Invalid input, please enter a valid price");
+    }
     }
 
     public void processGetByMakeModelRequest(){
-        System.out.println("Please enter the make you'd like the search for.");
-        String make = scanner.next();
-        System.out.println("Please enter the model you'd like to search for.");
-        String model = scanner.next();
-        System.out.println("The vehicles listed with that make and model are:");
-        List<Vehicle> vehicle_list = dealerShip.getVehicleByMakeModel(make, model);
-        displayVehicles(vehicle_list);
 
+        try {
+            System.out.println("Please enter the make you'd like the search for.");
+            String make = scanner.next();
+            System.out.println("Please enter the model you'd like to search for.");
+            String model = scanner.next();
+            System.out.println("The vehicles listed with that make and model are:");
+            List<Vehicle> vehicle_list = dealerShip.getVehicleByMakeModel(make, model);
+            displayVehicles(vehicle_list);
+        }catch(InputMismatchException e){
+            System.out.println("Please enter a valid make and model");
+        }
     }
 
     public void processGetByYearRequest(){
