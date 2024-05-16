@@ -86,6 +86,7 @@ public class UserInterface {
         System.out.println("Please enter the maximum price.");
         double max = scanner.nextInt();
         List<Vehicle> vehicle_list = dealerShip.getVehiclesByPrice(min, max);
+
         if(!vehicle_list.isEmpty()){
             System.out.println("The vehicles listed between that price range are: \n");
              displayVehicles(vehicle_list);}
@@ -133,9 +134,13 @@ public class UserInterface {
             int max = scanner.nextInt();
             List<Vehicle> vehicle_list = dealerShip.getVehicleByYear(min, max);
 
-            System.out.println("The vehicles listed between those years are:\n");
+            if(!vehicle_list.isEmpty()) {
+                System.out.println("The vehicles listed between those years are:\n");
+                displayVehicles(vehicle_list);
+            }else{
+                System.out.println("No vehicles found between that year range");
+            }
 
-            displayVehicles(vehicle_list);
         }catch(InputMismatchException e){
             System.out.println("Invalid year, please enter a valid year.");
         }
@@ -145,9 +150,15 @@ public class UserInterface {
         try {
             System.out.println("Please enter the color you'd like to filter by.");
             String color = scanner.next();
-            System.out.println("The results listed for your specific color are: \n");
             List<Vehicle> vehicle_list = dealerShip.getVehicleByColor(color);
-            displayVehicles(vehicle_list);
+
+            if(!vehicle_list.isEmpty()) {
+                System.out.println("The results listed for your specific color are: \n");
+                displayVehicles(vehicle_list);
+            }else{
+                System.out.println("Vehicle not found for that color");
+            }
+
         }catch(InputMismatchException e){
             System.out.println("Invalid input, please enter a valid color.");
         }
@@ -160,24 +171,38 @@ public class UserInterface {
             int min = scanner.nextInt();
             System.out.println("Please enter the maximum mileage.");
             int max = scanner.nextInt();
-            System.out.println("The vehicles listed between the given mileage range are: \n");
             List<Vehicle> vehicle_list = dealerShip.getVehicleByMileage(min, max);
-            displayVehicles(vehicle_list);
+
+            if(!vehicle_list.isEmpty()) {
+                System.out.println("The vehicles listed between the given mileage range are: \n");
+                displayVehicles(vehicle_list);
+            }else{
+                System.out.println("No vehicles found between that mileage range");
+            }
+
         }catch(InputMismatchException e){
             System.out.println("Invalid input, please enter a valid minimum and maximum year.");
         }
+
     }
 
     public void processGetByVehicleTypeRequest(){
-        try{
-        System.out.println("Please enter the vehicle type you'd like to filter by.");
-        String type = scanner.next();
-        System.out.println("The results listed for your specific vehicle type are: \n");
-        List<Vehicle> vehicle_list = dealerShip.getVehicleByType(type);
-        displayVehicles(vehicle_list);}
+        try {
+            System.out.println("Please enter the vehicle type you'd like to filter by.");
+            String type = scanner.next();
+            List<Vehicle> vehicle_list = dealerShip.getVehicleByType(type);
+
+            if (!vehicle_list.isEmpty()) {
+                System.out.println("The results listed for your specific vehicle type are: \n");
+                displayVehicles(vehicle_list);
+            }else{
+                System.out.println("No vehicles of that type found.");
+            }
+        }
         catch(InputMismatchException e){
             System.out.println("Please enter a valid vehicle type");
         }
+
     }
 
     public void processGetAllVehiclesRequest(){
@@ -208,7 +233,7 @@ public class UserInterface {
             Vehicle vehicle = new Vehicle(vin, year, make, model, type, color, odometer, price);
             dealerShip.addVehicle(vehicle);
             DealerShipFileManager.saveDealerShip(dealerShip);
-            System.out.println("You've succesfully added: " + vehicle.toString());
+            System.out.println("You've successfully added: " + vehicle.toString());
 
         }catch(InputMismatchException e){
             System.out.println("Please re-enter a valid input type.");
@@ -221,15 +246,19 @@ public class UserInterface {
             int vin = scanner.nextInt();
             for (Vehicle vehicle : dealerShip.getAllVehicles()) {
                 int search_vin = vehicle.getVin();
-                if (search_vin == vin) {
-                    dealerShip.removeVehicle(vehicle);
-                    System.out.println("You have successfully removed " + vehicle.toString());
+                    if (search_vin == vin) {
+                         dealerShip.removeVehicle(vehicle);
+                         System.out.println("You have successfully removed " + vehicle.toString());
+                    }else{
+                         System.out.println("No vehicle was found with that vin number.");
                 }
             }
             DealerShipFileManager.saveDealerShip(dealerShip);
+
         }catch(InputMismatchException e){
             System.out.println("Please enter a valid vin number.");
         }
+
     }
 
     private void displayVehicles(List<Vehicle> inventory){
