@@ -106,7 +106,6 @@ public class DealerShip {
 
     public void addVehicle(Vehicle vehicle){
         inventory.add(vehicle);
-        System.out.println("Your vehicle has been successfully added!");
     }
 
     public void removeVehicle(Vehicle vehicle){
