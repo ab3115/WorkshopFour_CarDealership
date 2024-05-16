@@ -24,6 +24,7 @@ public class UserInterface {
     }
 
     public void displayHelper(){
+
         System.out.println("Welcome to the car dealership! Please select an option!");
         System.out.println("\t(1)Get vehicles by price");
         System.out.println("\t(2)Get vehicles by make & model");
@@ -76,6 +77,7 @@ public class UserInterface {
     }
 
     public void processGetByPriceRequest(){
+
         System.out.println("Please enter the minimum price.");
         int min = scanner.nextInt();
         System.out.println("Please enter the maximum price.");
@@ -163,8 +165,15 @@ public class UserInterface {
     }
 
     public void processRemoveVehiclesRequest(){
-        System.out.println("How would you like to choose which vehicle to remove?");
-
+        System.out.println("Please enter the specific vin number of the vehicle you'd like to remove from lineup.");
+        int vin = scanner.nextInt();
+        for(Vehicle vehicle : dealerShip.getAllVehicles()){
+            int search_vin = vehicle.getVin();
+            if(search_vin == vin){
+                dealerShip.removeVehicle(vehicle);
+                System.out.println("You have successfully removed " + vehicle.toString());
+            }
+        }
         DealerShipFileManager.saveDealerShip(dealerShip);
     }
 
