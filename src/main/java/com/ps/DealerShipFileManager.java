@@ -7,7 +7,7 @@ import java.util.List;
 public class DealerShipFileManager {
 
 
-        public DealerShip getDealerShip(){
+        public static DealerShip getDealerShip(){
 
             DealerShip dealership = null;
 
@@ -44,7 +44,7 @@ public class DealerShipFileManager {
             return dealership;
         }
 
-        public void saveDealerShip(DealerShip dealerShip){
+        public static void saveDealerShip(DealerShip dealerShip){
 
             try{
 

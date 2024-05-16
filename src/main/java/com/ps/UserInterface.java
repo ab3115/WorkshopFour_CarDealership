@@ -42,24 +42,32 @@ public class UserInterface {
                 processGetByPriceRequest();
                 break;
             case("2"):
+                processGetByMakeModelRequest();
                 break;
             case("3"):
+                processGetByYearRequest();
                 break;
             case("4"):
+                processGetByColorRequest();
                 break;
             case("5"):
+                processGetByMileageRequest();
                 break;
             case("6"):
+                processGetByVehicleTypeRequest();
                 break;
             case("7"):
                 processGetAllVehiclesRequest();
                 break;
             case("8"):
+                processAddVehiclesRequest();
                 break;
             case("9"):
+                processRemoveVehiclesRequest();
                 break;
             case("99"):
-                break;
+                System.out.println("Exiting application...");
+                System.exit(0);
             default:
                 System.out.println("Please select one of the choices listed.");
                 break;
@@ -108,18 +116,20 @@ public class UserInterface {
     }
 
     public void processGetByMileageRequest(){
-        System.out.println("Please enter the color you'd like to filter by.");
-        String color = scanner.next();
-        System.out.println("The results listed for your specific color are:");
-        List<Vehicle> vehicle_list = dealerShip.getVehicleByColor(color);
+        System.out.println("Please enter the minimum mileage.");
+        int min = scanner.nextInt();
+        System.out.println("Please enter the maximum mileage.");
+        int max = scanner.nextInt();
+        System.out.println("The vehicles listed between the given mileage range are: ");
+        List<Vehicle> vehicle_list = dealerShip.getVehicleByMileage(min, max);
         displayVehicles(vehicle_list);
     }
 
     public void processGetByVehicleTypeRequest(){
-        System.out.println("Please enter the color you'd like to filter by.");
-        String color = scanner.next();
-        System.out.println("The results listed for your specific color are:");
-        List<Vehicle> vehicle_list = dealerShip.getVehicleByColor(color);
+        System.out.println("Please enter the vehicle type you'd like to filter by.");
+        String type = scanner.next();
+        System.out.println("The results listed for your specific vehicle type are:");
+        List<Vehicle> vehicle_list = dealerShip.getVehicleByType(type);
         displayVehicles(vehicle_list);
     }
 
@@ -131,11 +141,31 @@ public class UserInterface {
     }
 
     public void processAddVehiclesRequest(){
-
+        System.out.println("Please add the vin number of the vehicle.");
+        int vin = scanner.nextInt();
+        System.out.println("Please enter the year of your vehicle.");
+        int year = scanner.nextInt();
+        System.out.println("Please enter the make of the vehicle.");
+        String make = scanner.next();
+        System.out.println("Please enter the model of the vehicle.");
+        String model = scanner.next();
+        System.out.println("Please enter the type of vehicle.");
+        String type = scanner.next();
+        System.out.println("Please enter the color of the vehicle.");
+        String color = scanner.next();
+        System.out.println("Please enter the odometer reading(Please be honest).");
+        int odometer = scanner.nextInt();
+        System.out.println("Please enter the price of the vehicle you'd like to sell it for.");
+        double price = scanner.nextInt();
+        Vehicle vehicle = new Vehicle(vin, year,make,model,type,color,odometer,price);
+        dealerShip.addVehicle(vehicle);
+        DealerShipFileManager.saveDealerShip(dealerShip);
     }
 
     public void processRemoveVehiclesRequest(){
+        System.out.println("How would you like to choose which vehicle to remove?");
 
+        DealerShipFileManager.saveDealerShip(dealerShip);
     }
 
     private void displayVehicles(List<Vehicle> inventory){
