@@ -1,6 +1,8 @@
 package com.ps;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DealerShipFileManager {
 
@@ -43,10 +45,30 @@ public class DealerShipFileManager {
         }
 
         public void saveDealerShip(DealerShip dealerShip){
+
             try{
+
+                List<Vehicle> writer_inventory = dealerShip.getAllVehicles();
                 BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("inventory.csv", true));
-                String text;
-                text = String.format()
+
+                String name = dealerShip.getName();
+                String address = dealerShip.getAddress();
+                String phone = dealerShip.getPhone();
+                bufferedWriter.write(String.format("%s|%s|%s,", name, address, phone));
+
+                for(int i = 0;i < writer_inventory.size();i++){
+                    int vin = writer_inventory.get(i).getVin();
+                     int year = writer_inventory.get(i).getYear();
+                     String make = writer_inventory.get(i).getMake();
+                     String model = writer_inventory.get(i).getModel();
+                    String vehicleType = writer_inventory.get(i).getVehicleType();
+                     String color = writer_inventory.get(i).getColor();
+                     int odometer = writer_inventory.get(i).getOdometer();
+                    double price = writer_inventory.get(i).getPrice();
+                    bufferedWriter.write(String.format("%d|%d|%s|%s|%s|%s|%d|%.2f\\n,", vin, year, make, model, vehicleType, color, odometer, price));
+                }
+
+                bufferedWriter.close();
 
             }catch(IOException e){
                 e.printStackTrace();

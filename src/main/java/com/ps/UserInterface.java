@@ -39,6 +39,7 @@ public class UserInterface {
 
         switch(response){
             case("1"):
+                processGetByPriceRequest();
                 break;
             case("2"):
                 break;

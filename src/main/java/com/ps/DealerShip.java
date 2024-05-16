@@ -22,7 +22,18 @@ public class DealerShip {
         return name;
     }
 
+    public String getAddress(){
+        return address;
+    }
+
+    public String getPhone(){
+        return phone;
+    }
+
     public List<Vehicle> getVehiclesByPrice(int min, int max){
+        for(int i = 0; i<inventory.size(); i++){
+
+        }
         return null;
     }
 
@@ -50,9 +61,9 @@ public class DealerShip {
         return inventory;
     }
 
+
     public void addVehicle(Vehicle vehicle){
         inventory.add(vehicle);
-
     }
 
     public void removeVehicle(Vehicle vehicle){
