@@ -68,9 +68,9 @@ public class UserInterface {
     }
 
     public void processGetByPriceRequest(){
-        System.out.println("Please enter the minimum price");
+        System.out.println("Please enter the minimum price.");
         int min = scanner.nextInt();
-        System.out.println("Please enter the maximum price");
+        System.out.println("Please enter the maximum price.");
         int max = scanner.nextInt();
         System.out.println("The vehicles listed between that price range are: ");
         List<Vehicle> vehicle_list = dealerShip.getVehiclesByPrice(min, max);
@@ -78,23 +78,49 @@ public class UserInterface {
     }
 
     public void processGetByMakeModelRequest(){
+        System.out.println("Please enter the make you'd like the search for.");
+        String make = scanner.next();
+        System.out.println("Please enter the model you'd like to search for.");
+        String model = scanner.next();
+        System.out.println("The vehicles listed with that make and model are:");
+        List<Vehicle> vehicle_list = dealerShip.getVehicleByMakeModel(make, model);
+        displayVehicles(vehicle_list);
 
     }
 
     public void processGetByYearRequest(){
+        System.out.println("Please enter the lowest/minimum year you'd like:");
+        int min = scanner.nextInt();
+        System.out.println("Please enter the maximum year you'd like to search up until.");
+        int max = scanner.nextInt();
+        System.out.println("The vehicles listed between those years are:");
+        List<Vehicle> vehicle_list = dealerShip.getVehicleByYear(min, max);
+        displayVehicles(vehicle_list);
 
     }
 
     public void processGetByColorRequest(){
-
+        System.out.println("Please enter the color you'd like to filter by.");
+        String color = scanner.next();
+        System.out.println("The results listed for your specific color are:");
+        List<Vehicle> vehicle_list = dealerShip.getVehicleByColor(color);
+        displayVehicles(vehicle_list);
     }
 
     public void processGetByMileageRequest(){
-
+        System.out.println("Please enter the color you'd like to filter by.");
+        String color = scanner.next();
+        System.out.println("The results listed for your specific color are:");
+        List<Vehicle> vehicle_list = dealerShip.getVehicleByColor(color);
+        displayVehicles(vehicle_list);
     }
 
     public void processGetByVehicleTypeRequest(){
-
+        System.out.println("Please enter the color you'd like to filter by.");
+        String color = scanner.next();
+        System.out.println("The results listed for your specific color are:");
+        List<Vehicle> vehicle_list = dealerShip.getVehicleByColor(color);
+        displayVehicles(vehicle_list);
     }
 
     public void processGetAllVehiclesRequest(){
